@@ -1,0 +1,879 @@
+/* ==========================================================================
+   BLOG DETAILS PAGE — Premium Article Reading Experience
+   NexaClean Brand: #00b359 green, white bg, modern typography
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bd-green: #00b359;
+    --bd-green-light: rgba(0, 179, 89, 0.08);
+    --bd-green-border: rgba(0, 179, 89, 0.18);
+    --bd-text: #1a1a2e;
+    --bd-text-secondary: #64748b;
+    --bd-bg: #ffffff;
+    --bd-surface: #f8faf9;
+    --bd-border: #e2e8f0;
+    --bd-radius: 16px;
+    --bd-radius-sm: 10px;
+    --bd-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+    --bd-shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.04);
+    --bd-content-width: 720px;
+    --bd-wide-width: 1200px;
+}
+
+/* ── Reading Progress Bar ────────────────────────────── */
+.bd-progress-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 9999;
+    background: transparent;
+}
+
+.bd-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--bd-green), #00d46a);
+    transition: width 0.08s linear;
+    border-radius: 0 2px 2px 0;
+}
+
+/* ── Back Button ─────────────────────────────────────── */
+.bd-back-wrap {
+    max-width: var(--bd-wide-width);
+    margin: 0 auto;
+    padding: 100px 5% 0;
+}
+
+.bd-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--bd-text-secondary);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 100px;
+    border: 1px solid var(--bd-border);
+    background: var(--bd-bg);
+    transition: all 0.25s ease;
+}
+
+.bd-back-btn:hover {
+    color: var(--bd-green);
+    border-color: var(--bd-green);
+    background: var(--bd-green-light);
+    transform: translateX(-4px);
+}
+
+/* ── Hero Section ────────────────────────────────────── */
+.bd-hero {
+    max-width: var(--bd-wide-width);
+    margin: 40px auto 0;
+    padding: 0 5%;
+}
+
+.bd-cover-wrap {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 48px;
+    box-shadow: var(--bd-shadow-md);
+}
+
+.bd-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.bd-cover-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 60px 48px 40px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+}
+
+.bd-category-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--bd-green);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+}
+
+.bd-hero-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1.15;
+    color: #fff;
+    margin: 0 0 24px;
+    max-width: 800px;
+}
+
+.bd-hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.bd-author-chip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bd-author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.4);
+}
+
+.bd-author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.bd-author-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.bd-author-role {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+}
+
+.bd-meta-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,0.25);
+}
+
+.bd-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+}
+
+.bd-meta-item svg {
+    opacity: 0.7;
+}
+
+/* ── Social Share Buttons ────────────────────────────── */
+.bd-share-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: var(--bd-content-width);
+    margin: 0 auto 48px;
+    padding: 0 5%;
+}
+
+.bd-share-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--bd-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 4px;
+}
+
+.bd-share-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--bd-border);
+    background: var(--bd-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bd-text-secondary);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.bd-share-btn:hover {
+    background: var(--bd-green-light);
+    border-color: var(--bd-green-border);
+    color: var(--bd-green);
+    transform: translateY(-2px);
+}
+
+/* ── Content Layout (Main + Sidebar) ─────────────────── */
+.bd-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 64px;
+    max-width: var(--bd-wide-width);
+    margin: 0 auto;
+    padding: 0 5%;
+    align-items: start;
+}
+
+.bd-content {
+    max-width: var(--bd-content-width);
+    width: 100%;
+}
+
+/* ── Introduction (Drop Cap) ─────────────────────────── */
+.bd-intro {
+    font-size: 20px;
+    line-height: 1.75;
+    color: #374151;
+    margin-bottom: 48px;
+}
+
+.bd-intro::first-letter {
+    float: left;
+    font-size: 72px;
+    line-height: 56px;
+    padding: 6px 14px 4px 0;
+    font-weight: 800;
+    color: var(--bd-green);
+    font-family: 'Inter', sans-serif;
+}
+
+/* ── Quote Block ─────────────────────────────────────── */
+.bd-quote-block {
+    position: relative;
+    margin: 48px 0;
+    padding: 36px 36px 36px 40px;
+    background: var(--bd-green-light);
+    border-left: 4px solid var(--bd-green);
+    border-radius: 0 var(--bd-radius) var(--bd-radius) 0;
+}
+
+.bd-quote-icon {
+    position: absolute;
+    top: -14px;
+    left: 24px;
+    width: 36px;
+    height: 36px;
+    background: var(--bd-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.bd-quote-text {
+    font-size: 20px;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--bd-text);
+    margin: 0 0 12px;
+}
+
+.bd-quote-author {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--bd-green);
+}
+
+/* ── Content Sections ────────────────────────────────── */
+.bd-section {
+    margin-bottom: 56px;
+}
+
+.bd-section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--bd-text);
+    margin: 0 0 20px;
+    scroll-margin-top: 100px;
+}
+
+.bd-section-text {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #374151;
+    margin-bottom: 24px;
+}
+
+.bd-section-img-wrap {
+    margin: 32px 0;
+    border-radius: var(--bd-radius);
+    overflow: hidden;
+    box-shadow: var(--bd-shadow);
+}
+
+.bd-section-img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+}
+
+.bd-img-caption {
+    font-size: 13px;
+    color: var(--bd-text-secondary);
+    text-align: center;
+    padding: 14px 20px;
+    background: var(--bd-surface);
+    font-style: italic;
+}
+
+/* ── Pro Tips Cards ──────────────────────────────────── */
+.bd-tips-section {
+    margin: 56px 0;
+}
+
+.bd-tips-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--bd-text);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bd-tips-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.bd-tip-card {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    background: var(--bd-bg);
+    border: 1px solid var(--bd-border);
+    border-radius: var(--bd-radius);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.bd-tip-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--bd-green);
+    border-radius: 4px 0 0 4px;
+}
+
+.bd-tip-card:hover {
+    box-shadow: var(--bd-shadow-md);
+    border-color: var(--bd-green-border);
+    transform: translateY(-2px);
+}
+
+.bd-tip-icon-wrap {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    background: var(--bd-green-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bd-green);
+}
+
+.bd-tip-content h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--bd-text);
+    margin: 0 0 6px;
+}
+
+.bd-tip-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--bd-text-secondary);
+    margin: 0;
+}
+
+/* ── Checklist ───────────────────────────────────────── */
+.bd-checklist-section {
+    margin: 56px 0;
+    padding: 36px;
+    background: var(--bd-surface);
+    border-radius: var(--bd-radius);
+    border: 1px solid var(--bd-border);
+}
+
+.bd-checklist-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--bd-text);
+    margin: 0 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bd-checklist-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bd-checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--bd-border);
+    font-size: 16px;
+    color: var(--bd-text);
+    line-height: 1.5;
+}
+
+.bd-checklist-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.bd-check-icon {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    background: var(--bd-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin-top: 1px;
+}
+
+/* ── FAQ Accordion ───────────────────────────────────── */
+.bd-faq-section {
+    margin: 56px 0;
+}
+
+.bd-faq-section-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--bd-text);
+    margin-bottom: 24px;
+}
+
+.bd-faq-item {
+    border: 1px solid var(--bd-border);
+    border-radius: var(--bd-radius-sm);
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.bd-faq-item.active {
+    border-color: var(--bd-green-border);
+    box-shadow: 0 2px 12px rgba(0, 179, 89, 0.08);
+}
+
+.bd-faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--bd-text);
+    background: var(--bd-bg);
+    transition: all 0.25s ease;
+    user-select: none;
+}
+
+.bd-faq-question:hover {
+    background: var(--bd-surface);
+}
+
+.bd-faq-chevron {
+    transition: transform 0.3s ease;
+    color: var(--bd-text-secondary);
+    min-width: 20px;
+}
+
+.bd-faq-item.active .bd-faq-chevron {
+    transform: rotate(180deg);
+    color: var(--bd-green);
+}
+
+.bd-faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+}
+
+.bd-faq-answer-inner {
+    padding: 0 24px 20px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--bd-text-secondary);
+}
+
+.bd-faq-item.active .bd-faq-answer {
+    max-height: 400px;
+}
+
+/* ── Sidebar (TOC) ───────────────────────────────────── */
+.bd-sidebar {
+    position: sticky;
+    top: 100px;
+}
+
+.bd-toc {
+    padding: 28px;
+    background: var(--bd-surface);
+    border-radius: var(--bd-radius);
+    border: 1px solid var(--bd-border);
+}
+
+.bd-toc-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--bd-text-secondary);
+    margin: 0 0 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--bd-border);
+}
+
+.bd-toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bd-toc-link {
+    display: block;
+    padding: 10px 0;
+    font-size: 14px;
+    color: var(--bd-text-secondary);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    padding-left: 16px;
+    margin-left: -1px;
+    transition: all 0.25s ease;
+    line-height: 1.4;
+}
+
+.bd-toc-link:hover {
+    color: var(--bd-green);
+}
+
+.bd-toc-link.active {
+    color: var(--bd-green);
+    font-weight: 600;
+    border-left-color: var(--bd-green);
+    background: var(--bd-green-light);
+    border-radius: 0 6px 6px 0;
+}
+
+/* ── Divider ─────────────────────────────────────────── */
+.bd-divider {
+    height: 1px;
+    background: var(--bd-border);
+    margin: 56px 0;
+    max-width: var(--bd-content-width);
+}
+
+/* ── Author Card ─────────────────────────────────────── */
+.bd-author-card {
+    display: flex;
+    gap: 24px;
+    padding: 36px;
+    background: var(--bd-surface);
+    border-radius: var(--bd-radius);
+    border: 1px solid var(--bd-border);
+    max-width: var(--bd-content-width);
+    margin-bottom: 56px;
+}
+
+.bd-author-card-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--bd-green-light);
+}
+
+.bd-author-card-info h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--bd-text);
+    margin: 0 0 4px;
+}
+
+.bd-author-card-info .bd-ac-role {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--bd-green);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.bd-author-card-info p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--bd-text-secondary);
+    margin: 0;
+}
+
+/* ── Related Articles ────────────────────────────────── */
+.bd-related-section {
+    max-width: var(--bd-wide-width);
+    margin: 0 auto 64px;
+    padding: 0 5%;
+}
+
+.bd-related-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--bd-text);
+    margin-bottom: 32px;
+}
+
+.bd-related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.bd-related-card {
+    border-radius: var(--bd-radius);
+    overflow: hidden;
+    border: 1px solid var(--bd-border);
+    background: var(--bd-bg);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+}
+
+.bd-related-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--bd-shadow-md);
+    border-color: var(--bd-green-border);
+}
+
+.bd-related-card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.bd-related-card-body {
+    padding: 20px;
+}
+
+.bd-related-card-cat {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--bd-green);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.bd-related-card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--bd-text);
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* ── CTA Section ─────────────────────────────────────── */
+.bd-cta {
+    max-width: var(--bd-wide-width);
+    margin: 0 auto 80px;
+    padding: 0 5%;
+}
+
+.bd-cta-inner {
+    background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%);
+    border-radius: 24px;
+    padding: 72px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.bd-cta-inner::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0,179,89,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.bd-cta-inner::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -5%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0,179,89,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.bd-cta-inner > * {
+    position: relative;
+    z-index: 1;
+}
+
+.bd-cta-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(0,179,89,0.15);
+    color: var(--bd-green);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+}
+
+.bd-cta h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 16px;
+    line-height: 1.2;
+}
+
+.bd-cta p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    margin: 0 0 36px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.bd-cta-btns {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.bd-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: var(--bd-green);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.bd-btn-primary:hover {
+    background: #00994d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,179,89,0.3);
+}
+
+.bd-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.bd-btn-outline:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.4);
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .bd-layout {
+        grid-template-columns: 1fr;
+    }
+    .bd-sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .bd-cover-wrap {
+        height: 320px;
+        border-radius: 16px;
+    }
+    .bd-cover-overlay {
+        padding: 40px 24px 28px;
+    }
+    .bd-hero-title {
+        font-size: 28px;
+    }
+    .bd-meta-divider {
+        display: none;
+    }
+    .bd-hero-meta {
+        gap: 12px;
+    }
+    .bd-related-grid {
+        grid-template-columns: 1fr;
+    }
+    .bd-author-card {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    .bd-cta h2 {
+        font-size: 26px;
+    }
+    .bd-cta-inner {
+        padding: 48px 24px;
+    }
+    .bd-share-bar {
+        flex-wrap: wrap;
+    }
+    .bd-section-title {
+        font-size: 24px;
+    }
+}

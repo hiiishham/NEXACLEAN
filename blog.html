@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexaClean - Blog</title>
+    <link rel="stylesheet" href="style.css?v=5.2">
+    <link rel="stylesheet" href="blog-page.css">
+</head>
+
+<body>
+
+    <!-- NavBar -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <a href="index.html" class="nav-logo">
+                <img src="images/nexo-navbar.png" alt="NexaClean logo" class="nav-logo-icon">
+                <div class="nav-logo-text">
+                    <span class="logo-title"><span class="text-dark">Nexa</span><span
+                            class="text-green">Clean</span></span>
+                    <span class="logo-subtitle">CLEAN SPACES, BETTER PLACES</span>
+                </div>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#pricing" class="nav-link">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link active">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-right" style="display: flex; align-items: center; gap: 15px;">
+                <a href="index.html#book" class="nav-cta">
+                    Book Now
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                    </svg>
+                </a>
+                <!-- Hamburger Menu for Mobile -->
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="blog-page-main" style="padding-top: 80px;">
+        <section class="bp-hero" id="blogHero">
+            <div class="bp-hero-container">
+            <!-- LEFT: Visual Side -->
+            <div class="bp-hero-visual">
+                <div class="bp-simple-card">
+                    <img src="images/blog-hero-image-final-v2.jpg" alt="Premium Cleaning" class="bp-simple-img">
+                    <div class="bp-simple-overlay">
+                        <div class="bp-simple-badges">
+                            <span class="bp-badge">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
+                                Cleaning Tips
+                            </span>
+                            <span class="bp-badge">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                                Home Care
+                            </span>
+                        </div>
+                        <div class="bp-simple-bottom">
+                            <div class="bp-simple-text-content">
+                                <h3 class="bp-simple-title">Cleaning Tips<br>& Expert Guides</h3>
+                                <p class="bp-simple-desc">Practical cleaning advice, home care tips, and expert guides for a healthier lifestyle.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Content Side -->
+            <div class="bp-hero-content">
+                <span class="bp-badge-minimal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                    BLOG & RESOURCES
+                </span>
+                
+                <h1 class="bp-hero-title">Cleaning Tips,<br>Expert Guides &<br><span class="bp-text-green">Industry Insights</span></h1>
+                
+                <p class="bp-hero-desc">Discover professional cleaning advice, maintenance guides, eco-friendly solutions, and expert tips to keep your spaces spotless.</p>
+
+                <!-- Feature Icons Row -->
+                <div class="bp-hero-features">
+                    <div class="bp-hero-feature">
+                        <div class="bp-feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                        </div>
+                        <span class="bp-feature-label">Expert<br>Advice</span>
+                    </div>
+                    <div class="bp-hero-feature">
+                        <div class="bp-feature-icon bp-feature-icon--eco">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                        </div>
+                        <span class="bp-feature-label">Eco-Friendly<br>Solutions</span>
+                    </div>
+                    <div class="bp-hero-feature">
+                        <div class="bp-feature-icon bp-feature-icon--results">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <span class="bp-feature-label">Proven<br>Results</span>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="bp-hero-ctas">
+                    <a href="#bpGrid" class="bp-cta-primary">
+                        Explore Articles
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m12 8 4 4-4 4"/><path d="M8 12h8"/></svg>
+                    </a>
+                    <a href="#bpCategories" class="bp-cta-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                        Popular Topics
+                    </a>
+                </div>
+            </div>
+            </div>
+
+        </section>
+
+
+        <!-- FEATURED ARTICLE -->
+        <section class="bp-featured" id="bpFeatured">
+            <div class="bp-featured-container">
+                <div class="bp-editorial-card">
+                    <!-- Content Side -->
+                    <div class="bp-editorial-content-col bp-eco-content">
+
+                        <div class="bp-editorial-top-bar" style="margin-bottom: 16px;">
+                            <span class="bp-editorial-tag" style="background: #eaf5ec; color: #0f5132; border: none; border-radius: 50px; padding: 6px 16px; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; letter-spacing: 0.5px;">
+                                <span style="display: inline-block; width: 8px; height: 8px; background-color: #0f5132; border-radius: 50%; margin-right: 8px;"></span>FEATURED ARTICLE
+                            </span>
+                        </div>
+                        
+                        <h2 class="bp-editorial-title" style="font-size: 42px; margin-bottom: 12px; line-height: 1.05;">The Ultimate Deep Cleaning<br>Checklist for Every Home</h2>
+                        
+                        <p class="bp-editorial-desc" style="font-size: 15px; margin-bottom: 20px; -webkit-line-clamp: 3; line-clamp: 3;">From kitchens and bathrooms to hidden corners and upholstery, learn professional deep cleaning techniques that transform your living space into a healthier, fresher environment.</p>
+                        
+                        <div class="bp-editorial-footer-row" style="margin-bottom: 0;">
+                            <div class="bp-editorial-author-block bp-eco-author" style="margin: 0; padding: 0; background: transparent; border: none; backdrop-filter: none;">
+                                <div class="bp-author-avatar-icon" style="width: 32px; height: 32px; overflow: hidden; border: none;">
+                                    <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Sarah Johnson" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div class="bp-author-details">
+                                    <span class="bp-author-name" style="color: #fff; font-size: 14px;">Sarah Johnson</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bp-footer-divider"></div>
+
+                            <div class="bp-editorial-meta-chips" style="margin: 0; display: flex; gap: 8px; flex-wrap: wrap;">
+                                <span class="bp-glass-chip bp-premium-chip" style="white-space: nowrap;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6DFF7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    5 min read
+                                </span>
+                                <span class="bp-glass-chip bp-premium-chip" style="white-space: nowrap;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6DFF7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                                    Cleaning Tips
+                                </span>
+                                <span class="bp-glass-chip bp-premium-chip" style="white-space: nowrap;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6DFF7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                    June 22, 2026
+                                </span>
+                            </div>
+
+                            <a href="blog-details.html" class="bp-editorial-cta bp-eco-cta" style="padding: 10px 20px; font-size: 13px; text-transform: none; border-radius: 100px; margin-left: auto; white-space: nowrap;">Read Full Article &rarr;</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Image Side -->
+                    <div class="bp-editorial-image-col">
+                        <img src="images/featured_deep_cleaning.png" alt="Deep Cleaning Checklist" class="bp-editorial-img" style="opacity: 1;">
+                        <div class="bp-editorial-badge-float" style="top: 20px; right: 0;">
+                            <span class="bp-badge-trending" style="background: #fff; color: #059669; border: none; border-radius: 100px 0 0 100px; font-weight: 800; box-shadow: -4px 4px 15px rgba(0,0,0,0.15); padding: 10px 16px 10px 20px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 2px;"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                                Trending Article
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PREMIUM CATEGORIES -->
+        <section class="bp-explore-categories" id="bpCategories">
+            <div class="bp-explore-container">
+                <div class="bp-explore-header">
+                    <span class="bp-explore-badge">BLOG CATEGORIES</span>
+                    <h2 class="bp-explore-title">Explore Articles By Category</h2>
+                    <p class="bp-explore-desc">Find expert cleaning advice, practical home care tips, and professional insights tailored to your needs.</p>
+                </div>
+                
+                <div class="bp-explore-grid">
+                    <a href="#" class="bp-explore-card">
+                        <div class="bp-explore-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+                        <h3 class="bp-explore-card-title">Cleaning Tips</h3>
+                        <p class="bp-explore-card-desc">Practical daily cleaning advice and expert routines.</p>
+                        <span class="bp-explore-count">5 Articles &rarr;</span>
+                    </a>
+                    
+                    <a href="#" class="bp-explore-card">
+                        <div class="bp-explore-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                        <h3 class="bp-explore-card-title">Home Care</h3>
+                        <p class="bp-explore-card-desc">Smart ways to maintain a spotless and healthy home.</p>
+                        <span class="bp-explore-count">5 Articles &rarr;</span>
+                    </a>
+                    
+                    <a href="#" class="bp-explore-card">
+                        <div class="bp-explore-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg></div>
+                        <h3 class="bp-explore-card-title">Office Cleaning</h3>
+                        <p class="bp-explore-card-desc">Professional workspace maintenance and hygiene tips.</p>
+                        <span class="bp-explore-count">5 Articles &rarr;</span>
+                    </a>
+                    
+                    <a href="#" class="bp-explore-card">
+                        <div class="bp-explore-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
+                        <h3 class="bp-explore-card-title">Eco-Friendly</h3>
+                        <p class="bp-explore-card-desc">Sustainable cleaning methods and green product guides.</p>
+                        <span class="bp-explore-count">5 Articles &rarr;</span>
+                    </a>
+                    
+                    <a href="#" class="bp-explore-card">
+                        <div class="bp-explore-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg></div>
+                        <h3 class="bp-explore-card-title">Deep Cleaning</h3>
+                        <p class="bp-explore-card-desc">Comprehensive room-by-room cleaning checklists.</p>
+                        <span class="bp-explore-count">5 Articles &rarr;</span>
+                    </a>
+                    
+                    <a href="#" class="bp-explore-card">
+                        <div class="bp-explore-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.5L12 3V10H20L12 21.5V14H4Z"/></svg></div>
+                        <h3 class="bp-explore-card-title">Kitchen & Bathroom</h3>
+                        <p class="bp-explore-card-desc">Expert tips for maintaining hygienic spaces.</p>
+                        <span class="bp-explore-count">5 Articles &rarr;</span>
+                    </a>
+                    
+                    <a href="#" class="bp-explore-card">
+                        <div class="bp-explore-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg></div>
+                        <h3 class="bp-explore-card-title">Move-In / Move-Out</h3>
+                        <p class="bp-explore-card-desc">Essential cleaning guides for smooth transitions.</p>
+                        <span class="bp-explore-count">5 Articles &rarr;</span>
+                    </a>
+                    
+                    <a href="#" class="bp-explore-card">
+                        <div class="bp-explore-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+                        <h3 class="bp-explore-card-title">Company News</h3>
+                        <p class="bp-explore-card-desc">Latest updates, announcements, and NexaClean stories.</p>
+                        <span class="bp-explore-count">5 Articles &rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- LATEST ARTICLES GRID -->
+        <section class="bp-grid-section">
+            <div class="bp-section-header" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px; flex-wrap: wrap; gap: 20px;">
+                <div class="bp-filter-title-group">
+                    <h3 class="bp-section-heading" style="margin-bottom: 5px;">Latest Articles</h3>
+                    <p class="bp-filter-subtitle" style="color: var(--blog-text-muted); font-size: 15px; margin: 0;">Discover expert cleaning advice, home care tips, and professional insights.</p>
+                </div>
+                
+                <div class="bp-search-filter-wrapper">
+                    <div class="bp-sf-search">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bp-search-icon"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" id="bpSearchInput" placeholder="Search..." class="bp-sf-input">
+                    </div>
+                    <div class="bp-sf-divider"></div>
+                    <div class="bp-sf-filter" id="bpFilterTrigger">
+                        <span>Filter</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+                    </div>
+                    
+                    <!-- Dropdown Menu -->
+                    <div class="bp-sf-dropdown" id="bpFilterDropdown">
+                        <div class="bp-filter-bar" id="bpFilterBar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bp-grid" id="bpGrid"></div>
+        </section>
+
+        <!-- TRENDING SECTION -->
+        <section class="bp-trending-section">
+            <div class="bp-trending-container">
+                <div class="bp-explore-header" style="text-align: left; margin-bottom: 40px; margin-left: 0; max-width: 1000px;">
+                    <span class="bp-explore-badge">TRENDING NOW</span>
+                    <h2 class="bp-explore-title" style="margin-bottom: 15px;">Most Read This Month</h2>
+                    <p class="bp-explore-desc" style="max-width: 1000px; margin: 0;">Discover the articles our readers love the most and stay updated with expert cleaning insights.</p>
+                </div>
+                <div class="bp-trending-layout" id="bpTrendingGrid"></div>
+            </div>
+        </section>
+
+        <!-- NEWSLETTER CTA -->
+        <section class="bp-newsletter">
+            <div class="bp-nl-content">
+                <h2 class="bp-nl-title">Get Weekly Cleaning Tips Delivered To Your Inbox</h2>
+                <form class="bp-nl-form" action="#">
+                    <input type="email" placeholder="Your email address" required class="bp-nl-input">
+                    <button type="submit" class="bp-nl-btn">Subscribe Now</button>
+                </form>
+                <p class="bp-nl-trust">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                    Join 200+ homeowners receiving cleaning insights.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================
+         MODERN FOOTER SECTION
+    ====================================== -->
+    <footer class="site-footer">
+        <div class="footer-container">
+
+            <div class="footer-grid">
+                <!-- Column 1: Brand -->
+                <div class="footer-col brand-col">
+                    <a href="index.html" class="footer-logo">Nexa<span>Clean</span>.</a>
+                    <p class="footer-desc">Professional cleaning services focused on quality and hygiene. We make your space pristine and healthy.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                            </svg></a>
+                        <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                            </svg></a>
+                        <a href="#" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div class="footer-col">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Services -->
+                <div class="footer-col">
+                    <h4 class="footer-heading">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Home Cleaning</a></li>
+                        <li><a href="services.html">Office Cleaning</a></li>
+                        <li><a href="services.html">Deep Cleaning</a></li>
+                        <li><a href="services.html">Kitchen Cleaning</a></li>
+                        <li><a href="services.html">Bathroom Cleaning</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Contact -->
+                <div class="footer-col contact-col">
+                    <h4 class="footer-heading">Contact Us</h4>
+                    <ul class="footer-contact-info">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                            <span>+91 70122 08998</span>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect width="20" height="16" x="2" y="4" rx="2" />
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                            </svg>
+                            <span>hello@nexaclean.com</span>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            <span>123 Clean Street, Green City, GC 12345</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom-bar">
+                <p>&copy; 2026 NexaClean. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="articles.js"></script>
+    <script src="blog-listing.js"></script>
+</body>
+</html>
+
+
