@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 
 /* Variables for easy customization */
 :root {
@@ -6341,29 +6343,29 @@ body {
     border-radius: 8px;
     background: #f1f8f5;
     color: var(--primary-green, #16a34a);
-    transition: all 0.3s;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .faq-item.active .faq-icon {
     background: var(--primary-green, #16a34a);
     color: #ffffff;
-    transform: rotate(0deg);
+    transform: rotate(180deg);
 }
 
 .faq-plus {
-    display: block;
+    display: block !important;
 }
 
 .faq-minus {
-    display: none;
+    display: none !important;
 }
 
 .faq-item.active .faq-plus {
-    display: none;
+    display: block !important;
 }
 
 .faq-item.active .faq-minus {
-    display: block;
+    display: none !important;
 }
 
 .faq-answer {
@@ -7542,12 +7544,12 @@ body {
 
 @media (max-width: 576px) {
     .footer-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
     
     .footer-col.brand-col,
     .footer-col.contact-col {
-        grid-column: span 1;
+        grid-column: span 2;
     }
     
     .footer-bottom-bar {
@@ -16377,5 +16379,721 @@ img {
     }
     .sv-btn-solid, .sv-btn-outline {
         text-align: center;
+    }
+}
+
+/* =====================================
+   BOOKING SUCCESS MODAL STYLE
+====================================== */
+.booking-success-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    font-family: 'Poppins', 'Inter', sans-serif;
+}
+
+.booking-success-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    position: relative;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px 32px;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
+    z-index: 10;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-align: center;
+    overflow: hidden;
+}
+
+.booking-success-modal.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* New Booking Success Modal Styling */
+.bsm-new {
+    padding: 56px 40px 48px;
+    max-width: 440px;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.03);
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    background: #ffffff;
+}
+
+/* Decorative Background Waves */
+.bsm-bg-left, .bsm-bg-right {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0) 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bsm-bg-left {
+    bottom: -100px;
+    left: -100px;
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    background: repeating-radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.03) 0, rgba(16, 185, 129, 0.03) 1px, transparent 1px, transparent 15px);
+}
+
+.bsm-bg-right {
+    bottom: -100px;
+    right: -100px;
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    background: repeating-radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.03) 0, rgba(16, 185, 129, 0.03) 1px, transparent 1px, transparent 15px);
+}
+
+/* Close Button Override */
+.bsm-close {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #e2e8f0;
+    background: transparent;
+    padding: 0;
+    z-index: 2;
+}
+.bsm-close:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    transform: rotate(90deg);
+}
+
+.bsm-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Success Icon & Branches */
+.bsm-icon-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    margin-top: 20px;
+}
+
+.bsm-icon-bg {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    animation: bsmPulse 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes bsmPulse {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    50% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0.5; }
+}
+
+.bsm-icon-circle {
+    position: relative;
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: #10B981;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+    animation: bsmBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+    z-index: 2;
+}
+
+@keyframes bsmBounce {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Dots */
+.bsm-dot {
+    position: absolute;
+    color: #10B981;
+    font-size: 14px;
+    opacity: 0;
+    animation: bsmDotFade 1s ease-out forwards;
+}
+
+.bsm-dot-1 { top: -20px; left: -10px; animation-delay: 0.5s; font-size: 12px; }
+.bsm-dot-2 { top: -15px; right: -20px; animation-delay: 0.6s; font-size: 16px; opacity: 0.8; }
+.bsm-dot-3 { top: 20px; right: -45px; animation-delay: 0.7s; font-size: 10px; }
+.bsm-dot-4 { bottom: -10px; left: -30px; animation-delay: 0.8s; font-size: 14px; }
+
+@keyframes bsmDotFade {
+    0% { transform: scale(0) rotate(0deg); opacity: 0; }
+    100% { transform: scale(1) rotate(45deg); opacity: 0.8; }
+}
+
+/* Typography */
+.bsm-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.bsm-title-highlight {
+    color: #10B981;
+    font-size: 24px;
+}
+
+.bsm-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.bsm-sep-line {
+    height: 1px;
+    width: 40px;
+    background: #e2e8f0;
+}
+
+.bsm-sep-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10B981;
+}
+
+.bsm-desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.bsm-desc-light {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.5;
+    margin-bottom: 32px;
+}
+
+/* Button */
+.bsm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 40px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #22c55e, #059669);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.25);
+    transition: all 0.3s ease;
+    width: auto;
+    min-width: 200px;
+}
+
+.bsm-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(16, 185, 129, 0.35);
+    background: linear-gradient(135deg, #16a34a, #047857);
+}
+
+.bsm-btn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 576px) {
+    .modal-content {
+        padding: 32px 24px;
+        border-radius: 20px;
+    }
+    
+    .modal-title {
+        font-size: 19px;
+    }
+    
+    .modal-desc {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+}
+
+/* ==========================================
+   NEWSLETTER SUCCESS MODAL
+   ========================================== */
+
+/* Overlay - blurred dark background */
+.nl-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.nl-modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal Card */
+.nl-modal-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 56px 40px 48px;
+    max-width: 440px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.03);
+    transform: translateY(30px) scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: hidden;
+}
+
+.nl-modal-overlay.show .nl-modal-card {
+    transform: translateY(0) scale(1);
+}
+
+/* Decorative Background Waves */
+.nl-modal-bg-left, .nl-modal-bg-right {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0) 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.nl-modal-bg-left {
+    bottom: -100px;
+    left: -100px;
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    background: repeating-radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.03) 0, rgba(16, 185, 129, 0.03) 1px, transparent 1px, transparent 15px);
+}
+
+.nl-modal-bg-right {
+    bottom: -100px;
+    right: -100px;
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    background: repeating-radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.03) 0, rgba(16, 185, 129, 0.03) 1px, transparent 1px, transparent 15px);
+}
+
+/* Close button */
+.nl-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #e2e8f0;
+    background: transparent;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 2;
+}
+
+.nl-modal-close:hover {
+    background: #f8fafc;
+    color: #0f172a;
+    border-color: #cbd5e1;
+    transform: rotate(90deg);
+}
+
+/* Success icon */
+.nl-modal-icon-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    z-index: 1;
+}
+
+.nl-modal-icon-bg {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.08);
+    animation: nlPulse 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes nlPulse {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    50% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0.5; }
+}
+
+.nl-modal-icon-circle {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #10B981;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+    animation: nlIconBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+    z-index: 2;
+}
+
+@keyframes nlIconBounce {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Dots around the icon */
+.nl-modal-dot {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #10B981;
+    opacity: 0;
+    animation: nlDotFade 1s ease-out forwards;
+}
+
+.nl-dot-1 { top: -10px; left: -20px; animation-delay: 0.4s; width: 3px; height: 3px; }
+.nl-dot-2 { top: -5px; right: -25px; animation-delay: 0.5s; width: 5px; height: 5px; opacity: 0.6; }
+.nl-dot-3 { bottom: 0px; left: -30px; animation-delay: 0.6s; width: 4px; height: 4px; background: #6ee7b7; }
+
+@keyframes nlDotFade {
+    0% { transform: scale(0) translateY(10px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 0.6; }
+}
+
+/* Typography */
+.nl-modal-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 12px;
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+}
+
+.nl-modal-title-highlight {
+    color: #10B981;
+    font-size: 24px;
+}
+
+.nl-modal-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.nl-sep-line {
+    height: 1px;
+    width: 40px;
+    background: #e2e8f0;
+}
+
+.nl-sep-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10B981;
+}
+
+.nl-modal-desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.nl-modal-desc strong {
+    color: #10B981;
+    font-weight: 600;
+}
+
+.nl-modal-subdesc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Action button */
+.nl-modal-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 48px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #22c55e, #059669);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.25);
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+.nl-modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(16, 185, 129, 0.35);
+}
+
+.nl-modal-btn:active {
+    transform: translateY(0);
+}
+
+/* ==========================================
+   NEWSLETTER ERROR TOAST
+   ========================================== */
+
+.nl-error-toast {
+    position: fixed;
+    top: 32px;
+    right: 32px;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #1e293b;
+    color: #f8fafc;
+    padding: 16px 20px;
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    border-left: 4px solid #ef4444;
+    max-width: 400px;
+    transform: translateX(calc(100% + 40px));
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+}
+
+.nl-error-toast.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.nl-error-toast-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ef4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nl-error-toast-msg {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.nl-error-toast-close {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nl-error-toast-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #f8fafc;
+}
+
+/* Inline validation error for email input */
+.nl-input-error,
+.bp-nl-input-error {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #ef4444;
+    margin-top: 6px;
+    display: none;
+    align-items: center;
+    gap: 4px;
+}
+
+.nl-input-error.show,
+.bp-nl-input-error.show {
+    display: flex;
+}
+
+/* Shake animation for invalid input */
+@keyframes nlShake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+
+.nl-input-shake {
+    animation: nlShake 0.4s ease;
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+
+/* ==========================================
+   NEWSLETTER MODAL RESPONSIVE
+   ========================================== */
+
+@media (max-width: 576px) {
+    .nl-modal-card {
+        padding: 36px 24px 28px;
+        border-radius: 20px;
+    }
+
+    .nl-modal-icon-circle {
+        width: 64px;
+        height: 64px;
+    }
+
+    .nl-modal-icon-circle svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .nl-modal-title {
+        font-size: 19px;
+    }
+
+    .nl-modal-desc {
+        font-size: 14px;
+    }
+
+    .nl-modal-subdesc {
+        font-size: 12px;
+    }
+
+    .nl-modal-btn {
+        padding: 12px 36px;
+        font-size: 15px;
+        border-radius: 12px;
+    }
+
+    /* Error toast mobile */
+    .nl-error-toast {
+        top: auto;
+        bottom: 20px;
+        right: 16px;
+        left: 16px;
+        max-width: none;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 577px) {
+    .nl-modal-card {
+        padding: 40px 32px 32px;
+    }
+
+    .nl-error-toast {
+        right: 20px;
+        max-width: 360px;
     }
 }

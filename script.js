@@ -51,6 +51,8 @@ let slideInterval;
 const intervalTime = 5000; // Auto slide every 5 seconds
 
 function showSlide(index) {
+    if (!slides || slides.length === 0) return;
+    
     if (index >= slides.length) {
         currentIndex = 0;
     } else if (index < 0) {
@@ -64,34 +66,40 @@ function showSlide(index) {
     dots.forEach(dot => dot.classList.remove('active'));
 
     // Add active class to current slide and dot
-    slides[currentIndex].classList.add('active');
-    dots[currentIndex].classList.add('active');
+    if (slides[currentIndex]) slides[currentIndex].classList.add('active');
+    if (dots[currentIndex]) dots[currentIndex].classList.add('active');
 }
 
 // Next Slide Function for Auto Slider
 function nextSlide() {
+    if (!slides || slides.length === 0) return;
     showSlide(currentIndex + 1);
 }
 
 // Function triggered by clicking dots directly
 function currentSlide(index) {
+    if (!slides || slides.length === 0) return;
     showSlide(index);
     resetInterval(); // Reset timer when user clicks a dot manually
 }
 
 // Start Auto Slider
 function startSlide() {
+    if (!slides || slides.length === 0) return;
     slideInterval = setInterval(nextSlide, intervalTime);
 }
 
 // Reset Interval
 function resetInterval() {
+    if (!slides || slides.length === 0) return;
     clearInterval(slideInterval);
     startSlide();
 }
 
 // Initialize the slider on load
-startSlide();
+if (slides && slides.length > 0) {
+    startSlide();
+}
 
 
 
@@ -880,4 +888,316 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Start auto slide
     startPkgSlide();
+});
+
+
+
+
+// SMTP Email Form Submission Logic
+document.addEventListener("DOMContentLoaded", () => {
+  const bookingForm = document.getElementById("bookingForm");
+
+  // Only attach booking form logic if the form exists on this page
+  if (bookingForm) {
+    // Booking Success Modal DOM Logic (defined first so showSuccessModal is available)
+    const successModal = document.getElementById("bookingSuccessModal");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
+    const modalActionBtn = document.getElementById("modalActionBtn");
+    const modalBackdrop = document.getElementById("modalBackdrop");
+
+    const showSuccessModal = () => {
+      if (successModal) {
+        successModal.classList.add("show");
+        document.body.style.overflow = "hidden";
+      }
+    };
+
+    const hideSuccessModal = () => {
+      if (successModal) {
+        successModal.classList.remove("show");
+        document.body.style.overflow = "";
+      }
+    };
+
+    if (modalCloseBtn) modalCloseBtn.addEventListener("click", hideSuccessModal);
+    if (modalActionBtn) modalActionBtn.addEventListener("click", hideSuccessModal);
+    if (modalBackdrop) modalBackdrop.addEventListener("click", hideSuccessModal);
+
+    bookingForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const submitBtn = bookingForm.querySelector('button[type="submit"]') || bookingForm.querySelector(".btn-book-submit");
+      const originalBtnText = submitBtn ? submitBtn.textContent : "Book Service Now";
+
+      const formEntries = Object.fromEntries(new FormData(bookingForm).entries());
+      const formData = {
+        full_name: formEntries.full_name?.trim() || "",
+        phone_number: formEntries.phone_number?.trim() || "",
+        service_type: formEntries.service_type || "",
+        booking_date: formEntries.booking_date || "",
+        booking_time: formEntries.booking_time || "",
+        address: formEntries.address?.trim() || "",
+        message: formEntries.message?.trim() || "",
+      };
+
+      console.log("Form values collected:", formData);
+
+      // Client-side empty field validation
+      if (!formData.full_name || !formData.phone_number || !formData.service_type || !formData.booking_date || !formData.booking_time || !formData.address) {
+        console.warn("Validation failed: Some required fields are empty.");
+        alert("Please complete all required booking fields, including selecting a service.");
+        return;
+      }
+
+      console.log("Validation passed. Initializing API booking request...");
+
+      try {
+        // Set loading state
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Sending...";
+        }
+
+        console.log("Sending POST request to: http://localhost:5000/api/book-service");
+        const response = await fetch("http://localhost:5000/api/book-service", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        console.log("HTTP Response Status:", response.status, response.statusText);
+        const data = await response.json();
+        console.log("API Response Data Received:", data);
+
+        if (response.ok && data.success) {
+          console.log("Booking successfully submitted. Displaying popup and resetting form.");
+          showSuccessModal();
+          bookingForm.reset();
+
+          // Reset custom select UI
+          const selectTrigger = document.querySelector(".custom-select-trigger span");
+          if (selectTrigger) {
+            selectTrigger.textContent = "Select a service...";
+            selectTrigger.style.color = "";
+          }
+          const customOptions = document.querySelectorAll(".custom-option");
+          customOptions.forEach(opt => opt.classList.remove("selected"));
+
+          const estimateCard = document.getElementById("b_estimate_card");
+          const placeholderCard = document.getElementById("b_placeholder_card");
+          if (estimateCard && placeholderCard) {
+            estimateCard.style.display = "none";
+            placeholderCard.style.display = "block";
+          }
+        } else {
+          console.error("Booking API returned failure:", data.message || response.statusText);
+          alert("Failed to send booking request.");
+        }
+      } catch (error) {
+        console.error("Fetch request crashed with error:", error);
+        alert("Failed to send booking request.");
+      } finally {
+        console.log("Restoring submit button state.");
+        // Restore loading state
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        }
+      }
+    });
+  } // End of bookingForm block
+
+  // ==========================================
+  // FAQ ACCORDION LOGIC
+  // ==========================================
+  const faqQuestions = document.querySelectorAll(".faq-question");
+  faqQuestions.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".faq-item");
+      const answer = item.querySelector(".faq-answer");
+      const isActive = item.classList.contains("active");
+
+      // Close all other open FAQ items
+      document.querySelectorAll(".faq-item.active").forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove("active");
+          const otherBtn = otherItem.querySelector(".faq-question");
+          if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
+          
+          const otherAnswer = otherItem.querySelector(".faq-answer");
+          if (otherAnswer) {
+            otherAnswer.style.maxHeight = "0px";
+            otherAnswer.style.paddingBottom = "0px";
+          }
+        }
+      });
+
+      // Toggle current FAQ item
+      if (isActive) {
+        item.classList.remove("active");
+        btn.setAttribute("aria-expanded", "false");
+        if (answer) {
+          answer.style.maxHeight = "0px";
+          answer.style.paddingBottom = "0px";
+        }
+      } else {
+        item.classList.add("active");
+        btn.setAttribute("aria-expanded", "true");
+        if (answer) {
+          // Smoothly set maxHeight to scrollHeight and add padding-bottom
+          answer.style.maxHeight = answer.scrollHeight + "px";
+          answer.style.paddingBottom = "20px";
+        }
+      }
+    });
+  });
+
+  // ==========================================
+  // NEWSLETTER SUBSCRIBE LOGIC (Custom Modal)
+  // ==========================================
+  const newsletterForm = document.getElementById("newsletterForm");
+  const newsletterEmail = document.getElementById("newsletterEmail");
+  const newsletterBtn = document.getElementById("newsletterBtn");
+
+  // Modal & Toast DOM elements
+  const nlOverlay = document.getElementById("nlSuccessOverlay");
+  const nlModalClose = document.getElementById("nlModalClose");
+  const nlModalBtn = document.getElementById("nlModalBtn");
+  const nlErrorToast = document.getElementById("nlErrorToast");
+  const nlErrorMsg = document.getElementById("nlErrorMsg");
+  const nlErrorClose = document.getElementById("nlErrorClose");
+
+  // Auto-close timer reference
+  let nlAutoCloseTimer = null;
+  let nlErrorTimer = null;
+
+  // --- Helper: Validate email format ---
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  // --- Helper: Show success modal ---
+  const showNlSuccessModal = () => {
+    if (!nlOverlay) return;
+    nlOverlay.classList.add("show");
+    document.body.style.overflow = "hidden";
+
+    // Auto-close after 4 seconds
+    nlAutoCloseTimer = setTimeout(() => {
+      hideNlSuccessModal();
+    }, 4000);
+  };
+
+  // --- Helper: Hide success modal ---
+  const hideNlSuccessModal = () => {
+    if (!nlOverlay) return;
+    nlOverlay.classList.remove("show");
+    document.body.style.overflow = "";
+    if (nlAutoCloseTimer) {
+      clearTimeout(nlAutoCloseTimer);
+      nlAutoCloseTimer = null;
+    }
+  };
+
+  // --- Helper: Show error toast ---
+  const showNlErrorToast = (msg) => {
+    if (!nlErrorToast) return;
+    if (nlErrorMsg) nlErrorMsg.textContent = msg || "Something went wrong. Please try again.";
+    nlErrorToast.classList.add("show");
+
+    // Auto-dismiss after 4 seconds
+    if (nlErrorTimer) clearTimeout(nlErrorTimer);
+    nlErrorTimer = setTimeout(() => {
+      hideNlErrorToast();
+    }, 4000);
+  };
+
+  // --- Helper: Hide error toast ---
+  const hideNlErrorToast = () => {
+    if (!nlErrorToast) return;
+    nlErrorToast.classList.remove("show");
+    if (nlErrorTimer) {
+      clearTimeout(nlErrorTimer);
+      nlErrorTimer = null;
+    }
+  };
+
+  // --- Helper: Show inline shake + error on input ---
+  const shakeInput = (input) => {
+    if (!input) return;
+    input.classList.add("nl-input-shake");
+    setTimeout(() => input.classList.remove("nl-input-shake"), 400);
+  };
+
+  // Modal close event listeners
+  if (nlModalClose) nlModalClose.addEventListener("click", hideNlSuccessModal);
+  if (nlModalBtn) nlModalBtn.addEventListener("click", hideNlSuccessModal);
+  if (nlOverlay) {
+    nlOverlay.addEventListener("click", (e) => {
+      if (e.target === nlOverlay) hideNlSuccessModal();
+    });
+  }
+  if (nlErrorClose) nlErrorClose.addEventListener("click", hideNlErrorToast);
+
+  // Close modal via Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      if (nlOverlay && nlOverlay.classList.contains("show")) hideNlSuccessModal();
+      if (nlErrorToast && nlErrorToast.classList.contains("show")) hideNlErrorToast();
+    }
+  });
+
+  // --- Main form submission handler ---
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const email = newsletterEmail?.value?.trim();
+
+      // Validation: Empty field
+      if (!email) {
+        shakeInput(newsletterEmail);
+        showNlErrorToast("Please enter your email address.");
+        return;
+      }
+
+      // Validation: Invalid format
+      if (!isValidEmail(email)) {
+        shakeInput(newsletterEmail);
+        showNlErrorToast("Please enter a valid email address.");
+        return;
+      }
+
+      // Prevent duplicate submissions
+      const originalHTML = newsletterBtn.innerHTML;
+      newsletterBtn.disabled = true;
+      newsletterBtn.innerHTML = "Sending...";
+
+      try {
+        const response = await fetch("http://localhost:5000/api/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          // Success: Show custom modal, clear input
+          newsletterEmail.value = "";
+          showNlSuccessModal();
+        } else {
+          // Server returned an error
+          showNlErrorToast(data.message || "Subscription failed. Please try again.");
+        }
+      } catch (error) {
+        console.error("Newsletter subscription error:", error);
+        showNlErrorToast("Could not connect to the server. Please try again.");
+      } finally {
+        // Restore button state
+        newsletterBtn.innerHTML = originalHTML;
+        newsletterBtn.disabled = false;
+      }
+    });
+  }
 });
