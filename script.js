@@ -1,4 +1,10 @@
 // ==========================================
+// API CONFIGURATION (Production)
+// ==========================================
+const API_URL = "https://nexaclean.onrender.com/api/book-service";
+const API_SUBSCRIBE_URL = "https://nexaclean.onrender.com/api/subscribe";
+
+// ==========================================
 // 1. NAVBAR SCROLL & MOBILE MENU LOGIC
 // ==========================================
 const header = document.getElementById('header');
@@ -958,8 +964,8 @@ document.addEventListener("DOMContentLoaded", () => {
           submitBtn.textContent = "Sending...";
         }
 
-        console.log("Sending POST request to: http://localhost:5000/api/book-service");
-        const response = await fetch("http://localhost:5000/api/book-service", {
+        console.log(`Sending POST request to: ${API_URL}`);
+        const response = await fetch(API_URL, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -997,7 +1003,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       } catch (error) {
         console.error("Fetch request crashed with error:", error);
-        alert("Failed to send booking request.");
+        alert("Unable to connect to the server. Please try again later.");
       } finally {
         console.log("Restoring submit button state.");
         // Restore loading state
@@ -1174,7 +1180,7 @@ document.addEventListener("DOMContentLoaded", () => {
       newsletterBtn.innerHTML = "Sending...";
 
       try {
-        const response = await fetch("http://localhost:5000/api/subscribe", {
+        const response = await fetch(API_SUBSCRIBE_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email }),
