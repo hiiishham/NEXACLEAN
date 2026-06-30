@@ -60,13 +60,15 @@ app.use(express.urlencoded({ extended: true }));
 
 // Nodemailer Gmail SMTP transporter config
 const transporter = nodemailer.createTransport({
-  service: "gmail",
   host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
+  port: 587,
+  secure: false, // use STARTTLS
   auth: {
     user: emailUser,
     pass: emailPass,
+  },
+  tls: {
+    rejectUnauthorized: false
   },
   connectionTimeout: 15000, // 15 seconds connection timeout
   socketTimeout: 15000,     // 15 seconds socket timeout
