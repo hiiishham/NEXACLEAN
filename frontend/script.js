@@ -1,8 +1,8 @@
 // ==========================================
 // API CONFIGURATION (Production)
 // ==========================================
-const API_URL = "https://nexaclean-1.onrender.com/api/book-service";
-const API_SUBSCRIBE_URL = "https://nexaclean-1.onrender.com/api/subscribe";
+const API_URL = "https://nexaclean.onrender.com/api/book-service";
+const API_SUBSCRIBE_URL = "https://nexaclean.onrender.com/api/subscribe";
 
 // ==========================================
 // 1. NAVBAR SCROLL & MOBILE MENU LOGIC
