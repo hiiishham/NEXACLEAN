@@ -37,13 +37,13 @@ app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
-    
+
     // Check if origin is allowed or ends with vercel.app
-    const isAllowed = allowedOrigins.indexOf(origin) !== -1 || 
-                      origin.endsWith(".vercel.app") || 
-                      origin.includes("localhost:") ||
-                      origin.includes("127.0.0.1:");
-                      
+    const isAllowed = allowedOrigins.indexOf(origin) !== -1 ||
+      origin.endsWith(".vercel.app") ||
+      origin.includes("localhost:") ||
+      origin.includes("127.0.0.1:");
+
     if (isAllowed) {
       return callback(null, true);
     } else {
@@ -99,7 +99,7 @@ app.get("/", (req, res) => {
 // Test Email endpoint
 app.get("/api/test-email", async (req, res) => {
   console.log("[TEST EMAIL] Request received to send test email.");
-  
+
   if (!emailUser || !emailPass) {
     return res.status(500).json({
       success: false,
@@ -233,7 +233,7 @@ app.post("/api/book-service", async (req, res) => {
   try {
     console.log("[BOOKING EMAIL] Email sending started...");
     const info = await transporter.sendMail(mailOptions);
-    
+
     console.log("[BOOKING EMAIL SUCCESS] Email sent successfully!");
     console.log("  Nodemailer Message ID:", info.messageId);
     console.log("  SMTP Response:", info.response);
@@ -316,11 +316,11 @@ app.post("/api/subscribe", async (req, res) => {
 // Start Server and Print Audit Logs
 app.listen(port, () => {
   console.log("\n=============================================");
-  console.log("🚀 NEXACLEAN PRODUCTION BACKEND IS STARTING");
+  console.log(" NEXACLEAN PRODUCTION BACKEND IS STARTING");
   console.log("=============================================");
-  console.log(`📡 Port configuration: ${port}`);
+  console.log(`Port configuration: ${port}`);
   console.log("---------------------------------------------");
-  console.log("📦 Environment variables check:");
+  console.log(" Environment variables check:");
   console.log(`  PORT status:          [${envStatus.PORT ? "LOADED" : "MISSING (Using default 5000)"}]`);
   console.log(`  EMAIL_USER status:    [${envStatus.EMAIL_USER ? "LOADED" : "MISSING"}] -> ${emailUser || "None"}`);
   console.log(`  EMAIL_TO status:      [${envStatus.EMAIL_TO ? "LOADED (Configured)" : "FALLBACK (Same as sender)"}] -> ${emailTo}`);

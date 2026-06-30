@@ -1,8 +1,8 @@
 // ==========================================
 // API CONFIGURATION (Production)
 // ==========================================
-const API_URL = "https://nexaclean.onrender.com/api/book-service";
-const API_SUBSCRIBE_URL = "https://nexaclean.onrender.com/api/subscribe";
+const API_URL = "https://nexaclean-1.onrender.com/api/book-service";
+const API_SUBSCRIBE_URL = "https://nexaclean-1.onrender.com/api/subscribe";
 
 // ==========================================
 // 1. NAVBAR SCROLL & MOBILE MENU LOGIC
@@ -39,7 +39,7 @@ navLinks.forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
-        
+
         // Reset background inline style if closing at top
         if (window.scrollY <= 50) {
             header.style.backgroundColor = '#ffffff';
@@ -58,7 +58,7 @@ const intervalTime = 5000; // Auto slide every 5 seconds
 
 function showSlide(index) {
     if (!slides || slides.length === 0) return;
-    
+
     if (index >= slides.length) {
         currentIndex = 0;
     } else if (index < 0) {
@@ -130,7 +130,7 @@ const observer = new IntersectionObserver((entries, observer) => {
             let currentCount = 0; // Track precise float value
             const updateCount = () => {
                 const targetValue = +target.getAttribute('data-target');
-                
+
                 // Set total frames to 100, at 20ms each = 2 seconds total duration
                 const totalFrames = 100;
                 const inc = targetValue / totalFrames;
@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.body.style.overflow = 'auto';
             }
         });
-        
+
         // Close Modal via Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && modal.classList.contains('active')) {
@@ -327,13 +327,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             setTimeout(() => {
                 const whatsappNumber = '919876543210';
-                
+
                 const text = `Hi, I want to book a cleaning service.\nName: ${name}\nPhone: ${phone}\nService: ${service}\nMessage: ${message || 'No message provided'}`;
                 const encodedText = encodeURIComponent(text);
                 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
 
                 window.open(whatsappUrl, '_blank');
-                
+
                 // Reset button and form
                 btn.innerHTML = originalText;
                 btn.style.opacity = '1';
@@ -357,7 +357,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const addonCheckboxes = document.querySelectorAll('.addon-checkbox');
 
     if (calcProperty && calcSize && calcService && calcTotal) {
-        
+
         // 1. Dynamic Size Options based on Property Type
         const sizeOptions = {
             apartment: [
@@ -412,7 +412,7 @@ document.addEventListener("DOMContentLoaded", () => {
         function updateSizeDropdown() {
             const propType = calcProperty.value;
             const options = sizeOptions[propType] || sizeOptions['apartment'];
-            
+
             calcSize.innerHTML = '';
             options.forEach(opt => {
                 const el = document.createElement('option');
@@ -421,7 +421,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (opt.selected) el.selected = true;
                 calcSize.appendChild(el);
             });
-            
+
             calculatePrice();
         }
 
@@ -456,7 +456,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 else if (size === '3bhk') { minPrice = 1999; maxPrice = 2999; duration = '5-6 Hours'; team = '2-3 Professionals'; }
                 else if (size === '4bhk') { minPrice = 2999; maxPrice = 3999; duration = '6-8 Hours'; team = '3 Professionals'; }
                 else { minPrice = 3999; maxPrice = 5499; duration = '1 Full Day'; team = '3-4 Professionals'; }
-            } 
+            }
             else if (serviceType === 'deep' && propertyType === 'apartment') {
                 if (size === 'studio') { minPrice = 1499; maxPrice = 1999; duration = '4-5 Hours'; team = '2 Professionals'; }
                 else if (size === '1bhk') { minPrice = 1999; maxPrice = 2999; duration = '5-6 Hours'; team = '2-3 Professionals'; }
@@ -475,13 +475,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     glass: 1499, floor_polishing: 2999, disinfection: 1999, monthly: 4999
                 };
                 let base = baseCosts[serviceType] || 1500;
-                
+
                 // Multiplier by size
                 let sizeMult = 1.0;
-                if(size.includes('medium') || size.includes('1000_2500') || size.includes('2500_5000') && propertyType==='commercial') sizeMult = 1.5;
-                if(size.includes('large') || size.includes('2500_5000') || size.includes('5000_10000')) sizeMult = 2.5;
-                if(size.includes('luxury') || size.includes('plus') || size.includes('10000_plus')) sizeMult = 4.0;
-                
+                if (size.includes('medium') || size.includes('1000_2500') || size.includes('2500_5000') && propertyType === 'commercial') sizeMult = 1.5;
+                if (size.includes('large') || size.includes('2500_5000') || size.includes('5000_10000')) sizeMult = 2.5;
+                if (size.includes('luxury') || size.includes('plus') || size.includes('10000_plus')) sizeMult = 4.0;
+
                 let exact = base * sizeMult;
                 minPrice = Math.floor(exact * 0.9);
                 maxPrice = Math.floor(exact * 1.2);
@@ -504,13 +504,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Update Price Text
             calcTotal.textContent = `₹${minPrice.toLocaleString('en-IN')} – ₹${maxPrice.toLocaleString('en-IN')}`;
-            
+
             // Update Stats
-            if(calcDuration) calcDuration.textContent = duration;
-            if(calcTeam) calcTeam.textContent = team;
+            if (calcDuration) calcDuration.textContent = duration;
+            if (calcTeam) calcTeam.textContent = team;
 
             // Update Includes List
-            if(calcIncludes) {
+            if (calcIncludes) {
                 const includes = servicesMatrix[serviceType] || servicesMatrix['default'];
                 calcIncludes.innerHTML = '';
                 includes.forEach(item => {
@@ -533,7 +533,7 @@ document.addEventListener("DOMContentLoaded", () => {
         calcProperty.addEventListener('change', updateSizeDropdown);
         calcSize.addEventListener('change', calculatePrice);
         calcService.addEventListener('change', calculatePrice);
-        
+
         addonCheckboxes.forEach(cb => {
             cb.addEventListener('change', calculatePrice);
         });
@@ -545,7 +545,7 @@ document.addEventListener("DOMContentLoaded", () => {
 /* =====================================
    COMPACT PRICING CALCULATOR LOGIC
 ====================================== */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const calcContainer = document.getElementById('quote-calculator');
     if (!calcContainer) return;
 
@@ -562,7 +562,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     function updatePropertyMultiplier(val) {
-        switch(val) {
+        switch (val) {
             case 'apartment': state.propertyTypeMultiplier = 1.0; break;
             case 'villa': state.propertyTypeMultiplier = 1.2; break;
             case 'office': state.propertyTypeMultiplier = 1.1; break;
@@ -622,7 +622,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener("DOMContentLoaded", () => {
     const customSelect = document.getElementById("customServiceSelect");
     const hiddenInput = document.getElementById("b_service");
-    
+
     const serviceMeta = {
         home: { duration: "2–3 Hours", team: "1–2 Professionals" },
         deep: { duration: "4–6 Hours", team: "2–3 Professionals" },
@@ -663,7 +663,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Update trigger text and style
                 triggerText.textContent = text;
                 triggerText.style.color = "#0f172a"; // Keep text dark
-                
+
                 // Update hidden input
                 hiddenInput.value = val;
 
@@ -684,7 +684,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (placeholderCard && estimateCard) {
                     placeholderCard.style.display = "none";
                     estimateCard.style.display = "block";
-                    
+
                     if (dynamicPrice) {
                         if (parseInt(price) > 0) {
                             dynamicPrice.textContent = `₹${price}`;
@@ -715,7 +715,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const sliders = document.querySelectorAll('.ts-before-after');
-    
+
     sliders.forEach(slider => {
         const input = slider.querySelector('.ts-slider');
         if (!input) return;
@@ -736,7 +736,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dots = document.querySelectorAll('.sv-slider-dot');
     const prevBtn = document.querySelector('.sv-slider-arrow.prev');
     const nextBtn = document.querySelector('.sv-slider-arrow.next');
-    
+
     if (!track || slides.length === 0) return;
 
     let currentIndex = 0;
@@ -747,9 +747,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Handle wrap around
         if (index < 0) index = slides.length - 1;
         if (index >= slides.length) index = 0;
-        
+
         currentIndex = index;
-        
+
         // Update classes
         slides.forEach((slide, i) => {
             if (i === currentIndex) {
@@ -758,7 +758,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 slide.classList.remove('active');
             }
         });
-        
+
         dots.forEach((dot, i) => {
             if (i === currentIndex) {
                 dot.classList.add('active');
@@ -779,7 +779,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Event Listeners
     if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
     if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
-    
+
     dots.forEach((dot, i) => {
         dot.addEventListener('click', () => {
             goToSlide(i);
@@ -814,17 +814,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     track.addEventListener('touchstart', e => {
         touchStartX = e.changedTouches[0].screenX;
-    }, {passive: true});
+    }, { passive: true });
 
     track.addEventListener('touchend', e => {
         touchEndX = e.changedTouches[0].screenX;
         handleSwipe();
-    }, {passive: true});
+    }, { passive: true });
 
     function handleSwipe() {
         const minSwipeDistance = 50;
         const swipeDistance = touchEndX - touchStartX;
-        
+
         if (swipeDistance > minSwipeDistance) {
             // Swiped right (previous slide)
             prevSlide();
@@ -901,316 +901,316 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // SMTP Email Form Submission Logic
 document.addEventListener("DOMContentLoaded", () => {
-  const bookingForm = document.getElementById("bookingForm");
+    const bookingForm = document.getElementById("bookingForm");
 
-  // Only attach booking form logic if the form exists on this page
-  if (bookingForm) {
-    // Booking Success Modal DOM Logic (defined first so showSuccessModal is available)
-    const successModal = document.getElementById("bookingSuccessModal");
-    const modalCloseBtn = document.getElementById("modalCloseBtn");
-    const modalActionBtn = document.getElementById("modalActionBtn");
-    const modalBackdrop = document.getElementById("modalBackdrop");
+    // Only attach booking form logic if the form exists on this page
+    if (bookingForm) {
+        // Booking Success Modal DOM Logic (defined first so showSuccessModal is available)
+        const successModal = document.getElementById("bookingSuccessModal");
+        const modalCloseBtn = document.getElementById("modalCloseBtn");
+        const modalActionBtn = document.getElementById("modalActionBtn");
+        const modalBackdrop = document.getElementById("modalBackdrop");
 
-    const showSuccessModal = () => {
-      if (successModal) {
-        successModal.classList.add("show");
+        const showSuccessModal = () => {
+            if (successModal) {
+                successModal.classList.add("show");
+                document.body.style.overflow = "hidden";
+            }
+        };
+
+        const hideSuccessModal = () => {
+            if (successModal) {
+                successModal.classList.remove("show");
+                document.body.style.overflow = "";
+            }
+        };
+
+        if (modalCloseBtn) modalCloseBtn.addEventListener("click", hideSuccessModal);
+        if (modalActionBtn) modalActionBtn.addEventListener("click", hideSuccessModal);
+        if (modalBackdrop) modalBackdrop.addEventListener("click", hideSuccessModal);
+
+        bookingForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const submitBtn = bookingForm.querySelector('button[type="submit"]') || bookingForm.querySelector(".btn-book-submit");
+            const originalBtnText = submitBtn ? submitBtn.textContent : "Book Service Now";
+
+            const formEntries = Object.fromEntries(new FormData(bookingForm).entries());
+            const formData = {
+                full_name: formEntries.full_name?.trim() || "",
+                phone_number: formEntries.phone_number?.trim() || "",
+                service_type: formEntries.service_type || "",
+                booking_date: formEntries.booking_date || "",
+                booking_time: formEntries.booking_time || "",
+                address: formEntries.address?.trim() || "",
+                message: formEntries.message?.trim() || "",
+            };
+
+            console.log("Booking submission started");
+            console.log("Form values collected:", formData);
+
+            // Client-side empty field validation
+            if (!formData.full_name || !formData.phone_number || !formData.service_type || !formData.booking_date || !formData.booking_time || !formData.address) {
+                console.warn("Validation failed: Some required fields are empty.");
+                console.log("Booking failed");
+                alert("Please complete all required booking fields, including selecting a service.");
+                return;
+            }
+
+            console.log("Validation passed. Initializing API booking request...");
+
+            try {
+                // Set loading state
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = "Sending...";
+                }
+
+                console.log("Sending request to backend");
+                console.log(`Sending POST request to: ${API_URL}`);
+                const response = await fetch(API_URL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                console.log("Backend response received");
+                console.log("HTTP Response Status:", response.status, response.statusText);
+                const data = await response.json();
+                console.log("API Response Data Received:", data);
+
+                if (response.ok && data.success) {
+                    console.log("Booking successful");
+                    console.log("Booking successfully submitted. Displaying popup and resetting form.");
+                    showSuccessModal();
+                    bookingForm.reset();
+
+                    // Reset custom select UI
+                    const selectTrigger = document.querySelector(".custom-select-trigger span");
+                    if (selectTrigger) {
+                        selectTrigger.textContent = "Select a service...";
+                        selectTrigger.style.color = "";
+                    }
+                    const customOptions = document.querySelectorAll(".custom-option");
+                    customOptions.forEach(opt => opt.classList.remove("selected"));
+
+                    const estimateCard = document.getElementById("b_estimate_card");
+                    const placeholderCard = document.getElementById("b_placeholder_card");
+                    if (estimateCard && placeholderCard) {
+                        estimateCard.style.display = "none";
+                        placeholderCard.style.display = "block";
+                    }
+                } else {
+                    console.log("Booking failed");
+                    console.error("Booking API returned failure:", data.message || response.statusText);
+                    alert("Failed to send booking request.");
+                }
+            } catch (error) {
+                console.log("Booking failed");
+                console.error("Fetch request crashed with error:", error);
+                alert("Unable to connect to the server. Please try again later.");
+            } finally {
+                console.log("Restoring submit button state.");
+                // Restore loading state
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                }
+            }
+        });
+    } // End of bookingForm block
+
+    // ==========================================
+    // FAQ ACCORDION LOGIC
+    // ==========================================
+    const faqQuestions = document.querySelectorAll(".faq-question");
+    faqQuestions.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const item = btn.closest(".faq-item");
+            const answer = item.querySelector(".faq-answer");
+            const isActive = item.classList.contains("active");
+
+            // Close all other open FAQ items
+            document.querySelectorAll(".faq-item.active").forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove("active");
+                    const otherBtn = otherItem.querySelector(".faq-question");
+                    if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
+
+                    const otherAnswer = otherItem.querySelector(".faq-answer");
+                    if (otherAnswer) {
+                        otherAnswer.style.maxHeight = "0px";
+                        otherAnswer.style.paddingBottom = "0px";
+                    }
+                }
+            });
+
+            // Toggle current FAQ item
+            if (isActive) {
+                item.classList.remove("active");
+                btn.setAttribute("aria-expanded", "false");
+                if (answer) {
+                    answer.style.maxHeight = "0px";
+                    answer.style.paddingBottom = "0px";
+                }
+            } else {
+                item.classList.add("active");
+                btn.setAttribute("aria-expanded", "true");
+                if (answer) {
+                    // Smoothly set maxHeight to scrollHeight and add padding-bottom
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    answer.style.paddingBottom = "20px";
+                }
+            }
+        });
+    });
+
+    // ==========================================
+    // NEWSLETTER SUBSCRIBE LOGIC (Custom Modal)
+    // ==========================================
+    const newsletterForm = document.getElementById("newsletterForm");
+    const newsletterEmail = document.getElementById("newsletterEmail");
+    const newsletterBtn = document.getElementById("newsletterBtn");
+
+    // Modal & Toast DOM elements
+    const nlOverlay = document.getElementById("nlSuccessOverlay");
+    const nlModalClose = document.getElementById("nlModalClose");
+    const nlModalBtn = document.getElementById("nlModalBtn");
+    const nlErrorToast = document.getElementById("nlErrorToast");
+    const nlErrorMsg = document.getElementById("nlErrorMsg");
+    const nlErrorClose = document.getElementById("nlErrorClose");
+
+    // Auto-close timer reference
+    let nlAutoCloseTimer = null;
+    let nlErrorTimer = null;
+
+    // --- Helper: Validate email format ---
+    const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    // --- Helper: Show success modal ---
+    const showNlSuccessModal = () => {
+        if (!nlOverlay) return;
+        nlOverlay.classList.add("show");
         document.body.style.overflow = "hidden";
-      }
+
+        // Auto-close after 4 seconds
+        nlAutoCloseTimer = setTimeout(() => {
+            hideNlSuccessModal();
+        }, 4000);
     };
 
-    const hideSuccessModal = () => {
-      if (successModal) {
-        successModal.classList.remove("show");
+    // --- Helper: Hide success modal ---
+    const hideNlSuccessModal = () => {
+        if (!nlOverlay) return;
+        nlOverlay.classList.remove("show");
         document.body.style.overflow = "";
-      }
+        if (nlAutoCloseTimer) {
+            clearTimeout(nlAutoCloseTimer);
+            nlAutoCloseTimer = null;
+        }
     };
 
-    if (modalCloseBtn) modalCloseBtn.addEventListener("click", hideSuccessModal);
-    if (modalActionBtn) modalActionBtn.addEventListener("click", hideSuccessModal);
-    if (modalBackdrop) modalBackdrop.addEventListener("click", hideSuccessModal);
+    // --- Helper: Show error toast ---
+    const showNlErrorToast = (msg) => {
+        if (!nlErrorToast) return;
+        if (nlErrorMsg) nlErrorMsg.textContent = msg || "Something went wrong. Please try again.";
+        nlErrorToast.classList.add("show");
 
-    bookingForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
+        // Auto-dismiss after 4 seconds
+        if (nlErrorTimer) clearTimeout(nlErrorTimer);
+        nlErrorTimer = setTimeout(() => {
+            hideNlErrorToast();
+        }, 4000);
+    };
 
-      const submitBtn = bookingForm.querySelector('button[type="submit"]') || bookingForm.querySelector(".btn-book-submit");
-      const originalBtnText = submitBtn ? submitBtn.textContent : "Book Service Now";
-
-      const formEntries = Object.fromEntries(new FormData(bookingForm).entries());
-      const formData = {
-        full_name: formEntries.full_name?.trim() || "",
-        phone_number: formEntries.phone_number?.trim() || "",
-        service_type: formEntries.service_type || "",
-        booking_date: formEntries.booking_date || "",
-        booking_time: formEntries.booking_time || "",
-        address: formEntries.address?.trim() || "",
-        message: formEntries.message?.trim() || "",
-      };
-
-      console.log("Booking submission started");
-      console.log("Form values collected:", formData);
-
-      // Client-side empty field validation
-      if (!formData.full_name || !formData.phone_number || !formData.service_type || !formData.booking_date || !formData.booking_time || !formData.address) {
-        console.warn("Validation failed: Some required fields are empty.");
-        console.log("Booking failed");
-        alert("Please complete all required booking fields, including selecting a service.");
-        return;
-      }
-
-      console.log("Validation passed. Initializing API booking request...");
-
-      try {
-        // Set loading state
-        if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.textContent = "Sending...";
+    // --- Helper: Hide error toast ---
+    const hideNlErrorToast = () => {
+        if (!nlErrorToast) return;
+        nlErrorToast.classList.remove("show");
+        if (nlErrorTimer) {
+            clearTimeout(nlErrorTimer);
+            nlErrorTimer = null;
         }
+    };
 
-        console.log("Sending request to backend");
-        console.log(`Sending POST request to: ${API_URL}`);
-        const response = await fetch(API_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
+    // --- Helper: Show inline shake + error on input ---
+    const shakeInput = (input) => {
+        if (!input) return;
+        input.classList.add("nl-input-shake");
+        setTimeout(() => input.classList.remove("nl-input-shake"), 400);
+    };
+
+    // Modal close event listeners
+    if (nlModalClose) nlModalClose.addEventListener("click", hideNlSuccessModal);
+    if (nlModalBtn) nlModalBtn.addEventListener("click", hideNlSuccessModal);
+    if (nlOverlay) {
+        nlOverlay.addEventListener("click", (e) => {
+            if (e.target === nlOverlay) hideNlSuccessModal();
         });
-
-        console.log("Backend response received");
-        console.log("HTTP Response Status:", response.status, response.statusText);
-        const data = await response.json();
-        console.log("API Response Data Received:", data);
-
-        if (response.ok && data.success) {
-          console.log("Booking successful");
-          console.log("Booking successfully submitted. Displaying popup and resetting form.");
-          showSuccessModal();
-          bookingForm.reset();
-
-          // Reset custom select UI
-          const selectTrigger = document.querySelector(".custom-select-trigger span");
-          if (selectTrigger) {
-            selectTrigger.textContent = "Select a service...";
-            selectTrigger.style.color = "";
-          }
-          const customOptions = document.querySelectorAll(".custom-option");
-          customOptions.forEach(opt => opt.classList.remove("selected"));
-
-          const estimateCard = document.getElementById("b_estimate_card");
-          const placeholderCard = document.getElementById("b_placeholder_card");
-          if (estimateCard && placeholderCard) {
-            estimateCard.style.display = "none";
-            placeholderCard.style.display = "block";
-          }
-        } else {
-          console.log("Booking failed");
-          console.error("Booking API returned failure:", data.message || response.statusText);
-          alert("Failed to send booking request.");
-        }
-      } catch (error) {
-        console.log("Booking failed");
-        console.error("Fetch request crashed with error:", error);
-        alert("Unable to connect to the server. Please try again later.");
-      } finally {
-        console.log("Restoring submit button state.");
-        // Restore loading state
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalBtnText;
-        }
-      }
-    });
-  } // End of bookingForm block
-
-  // ==========================================
-  // FAQ ACCORDION LOGIC
-  // ==========================================
-  const faqQuestions = document.querySelectorAll(".faq-question");
-  faqQuestions.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const item = btn.closest(".faq-item");
-      const answer = item.querySelector(".faq-answer");
-      const isActive = item.classList.contains("active");
-
-      // Close all other open FAQ items
-      document.querySelectorAll(".faq-item.active").forEach(otherItem => {
-        if (otherItem !== item) {
-          otherItem.classList.remove("active");
-          const otherBtn = otherItem.querySelector(".faq-question");
-          if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
-          
-          const otherAnswer = otherItem.querySelector(".faq-answer");
-          if (otherAnswer) {
-            otherAnswer.style.maxHeight = "0px";
-            otherAnswer.style.paddingBottom = "0px";
-          }
-        }
-      });
-
-      // Toggle current FAQ item
-      if (isActive) {
-        item.classList.remove("active");
-        btn.setAttribute("aria-expanded", "false");
-        if (answer) {
-          answer.style.maxHeight = "0px";
-          answer.style.paddingBottom = "0px";
-        }
-      } else {
-        item.classList.add("active");
-        btn.setAttribute("aria-expanded", "true");
-        if (answer) {
-          // Smoothly set maxHeight to scrollHeight and add padding-bottom
-          answer.style.maxHeight = answer.scrollHeight + "px";
-          answer.style.paddingBottom = "20px";
-        }
-      }
-    });
-  });
-
-  // ==========================================
-  // NEWSLETTER SUBSCRIBE LOGIC (Custom Modal)
-  // ==========================================
-  const newsletterForm = document.getElementById("newsletterForm");
-  const newsletterEmail = document.getElementById("newsletterEmail");
-  const newsletterBtn = document.getElementById("newsletterBtn");
-
-  // Modal & Toast DOM elements
-  const nlOverlay = document.getElementById("nlSuccessOverlay");
-  const nlModalClose = document.getElementById("nlModalClose");
-  const nlModalBtn = document.getElementById("nlModalBtn");
-  const nlErrorToast = document.getElementById("nlErrorToast");
-  const nlErrorMsg = document.getElementById("nlErrorMsg");
-  const nlErrorClose = document.getElementById("nlErrorClose");
-
-  // Auto-close timer reference
-  let nlAutoCloseTimer = null;
-  let nlErrorTimer = null;
-
-  // --- Helper: Validate email format ---
-  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-  // --- Helper: Show success modal ---
-  const showNlSuccessModal = () => {
-    if (!nlOverlay) return;
-    nlOverlay.classList.add("show");
-    document.body.style.overflow = "hidden";
-
-    // Auto-close after 4 seconds
-    nlAutoCloseTimer = setTimeout(() => {
-      hideNlSuccessModal();
-    }, 4000);
-  };
-
-  // --- Helper: Hide success modal ---
-  const hideNlSuccessModal = () => {
-    if (!nlOverlay) return;
-    nlOverlay.classList.remove("show");
-    document.body.style.overflow = "";
-    if (nlAutoCloseTimer) {
-      clearTimeout(nlAutoCloseTimer);
-      nlAutoCloseTimer = null;
     }
-  };
+    if (nlErrorClose) nlErrorClose.addEventListener("click", hideNlErrorToast);
 
-  // --- Helper: Show error toast ---
-  const showNlErrorToast = (msg) => {
-    if (!nlErrorToast) return;
-    if (nlErrorMsg) nlErrorMsg.textContent = msg || "Something went wrong. Please try again.";
-    nlErrorToast.classList.add("show");
-
-    // Auto-dismiss after 4 seconds
-    if (nlErrorTimer) clearTimeout(nlErrorTimer);
-    nlErrorTimer = setTimeout(() => {
-      hideNlErrorToast();
-    }, 4000);
-  };
-
-  // --- Helper: Hide error toast ---
-  const hideNlErrorToast = () => {
-    if (!nlErrorToast) return;
-    nlErrorToast.classList.remove("show");
-    if (nlErrorTimer) {
-      clearTimeout(nlErrorTimer);
-      nlErrorTimer = null;
-    }
-  };
-
-  // --- Helper: Show inline shake + error on input ---
-  const shakeInput = (input) => {
-    if (!input) return;
-    input.classList.add("nl-input-shake");
-    setTimeout(() => input.classList.remove("nl-input-shake"), 400);
-  };
-
-  // Modal close event listeners
-  if (nlModalClose) nlModalClose.addEventListener("click", hideNlSuccessModal);
-  if (nlModalBtn) nlModalBtn.addEventListener("click", hideNlSuccessModal);
-  if (nlOverlay) {
-    nlOverlay.addEventListener("click", (e) => {
-      if (e.target === nlOverlay) hideNlSuccessModal();
+    // Close modal via Escape key
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            if (nlOverlay && nlOverlay.classList.contains("show")) hideNlSuccessModal();
+            if (nlErrorToast && nlErrorToast.classList.contains("show")) hideNlErrorToast();
+        }
     });
-  }
-  if (nlErrorClose) nlErrorClose.addEventListener("click", hideNlErrorToast);
 
-  // Close modal via Escape key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      if (nlOverlay && nlOverlay.classList.contains("show")) hideNlSuccessModal();
-      if (nlErrorToast && nlErrorToast.classList.contains("show")) hideNlErrorToast();
-    }
-  });
+    // --- Main form submission handler ---
+    if (newsletterForm) {
+        newsletterForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
 
-  // --- Main form submission handler ---
-  if (newsletterForm) {
-    newsletterForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
+            const email = newsletterEmail?.value?.trim();
 
-      const email = newsletterEmail?.value?.trim();
+            // Validation: Empty field
+            if (!email) {
+                shakeInput(newsletterEmail);
+                showNlErrorToast("Please enter your email address.");
+                return;
+            }
 
-      // Validation: Empty field
-      if (!email) {
-        shakeInput(newsletterEmail);
-        showNlErrorToast("Please enter your email address.");
-        return;
-      }
+            // Validation: Invalid format
+            if (!isValidEmail(email)) {
+                shakeInput(newsletterEmail);
+                showNlErrorToast("Please enter a valid email address.");
+                return;
+            }
 
-      // Validation: Invalid format
-      if (!isValidEmail(email)) {
-        shakeInput(newsletterEmail);
-        showNlErrorToast("Please enter a valid email address.");
-        return;
-      }
+            // Prevent duplicate submissions
+            const originalHTML = newsletterBtn.innerHTML;
+            newsletterBtn.disabled = true;
+            newsletterBtn.innerHTML = "Sending...";
 
-      // Prevent duplicate submissions
-      const originalHTML = newsletterBtn.innerHTML;
-      newsletterBtn.disabled = true;
-      newsletterBtn.innerHTML = "Sending...";
+            try {
+                const response = await fetch(API_SUBSCRIBE_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email }),
+                });
 
-      try {
-        const response = await fetch(API_SUBSCRIBE_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email }),
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    // Success: Show custom modal, clear input
+                    newsletterEmail.value = "";
+                    showNlSuccessModal();
+                } else {
+                    // Server returned an error
+                    showNlErrorToast(data.message || "Subscription failed. Please try again.");
+                }
+            } catch (error) {
+                console.error("Newsletter subscription error:", error);
+                showNlErrorToast("Could not connect to the server. Please try again.");
+            } finally {
+                // Restore button state
+                newsletterBtn.innerHTML = originalHTML;
+                newsletterBtn.disabled = false;
+            }
         });
-
-        const data = await response.json();
-
-        if (response.ok && data.success) {
-          // Success: Show custom modal, clear input
-          newsletterEmail.value = "";
-          showNlSuccessModal();
-        } else {
-          // Server returned an error
-          showNlErrorToast(data.message || "Subscription failed. Please try again.");
-        }
-      } catch (error) {
-        console.error("Newsletter subscription error:", error);
-        showNlErrorToast("Could not connect to the server. Please try again.");
-      } finally {
-        // Restore button state
-        newsletterBtn.innerHTML = originalHTML;
-        newsletterBtn.disabled = false;
-      }
-    });
-  }
+    }
 });
