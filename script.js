@@ -946,11 +946,13 @@ document.addEventListener("DOMContentLoaded", () => {
         message: formEntries.message?.trim() || "",
       };
 
+      console.log("Booking submission started");
       console.log("Form values collected:", formData);
 
       // Client-side empty field validation
       if (!formData.full_name || !formData.phone_number || !formData.service_type || !formData.booking_date || !formData.booking_time || !formData.address) {
         console.warn("Validation failed: Some required fields are empty.");
+        console.log("Booking failed");
         alert("Please complete all required booking fields, including selecting a service.");
         return;
       }
@@ -964,6 +966,7 @@ document.addEventListener("DOMContentLoaded", () => {
           submitBtn.textContent = "Sending...";
         }
 
+        console.log("Sending request to backend");
         console.log(`Sending POST request to: ${API_URL}`);
         const response = await fetch(API_URL, {
           method: "POST",
@@ -973,11 +976,13 @@ document.addEventListener("DOMContentLoaded", () => {
           body: JSON.stringify(formData),
         });
 
+        console.log("Backend response received");
         console.log("HTTP Response Status:", response.status, response.statusText);
         const data = await response.json();
         console.log("API Response Data Received:", data);
 
         if (response.ok && data.success) {
+          console.log("Booking successful");
           console.log("Booking successfully submitted. Displaying popup and resetting form.");
           showSuccessModal();
           bookingForm.reset();
@@ -998,10 +1003,12 @@ document.addEventListener("DOMContentLoaded", () => {
             placeholderCard.style.display = "block";
           }
         } else {
+          console.log("Booking failed");
           console.error("Booking API returned failure:", data.message || response.statusText);
           alert("Failed to send booking request.");
         }
       } catch (error) {
+        console.log("Booking failed");
         console.error("Fetch request crashed with error:", error);
         alert("Unable to connect to the server. Please try again later.");
       } finally {
