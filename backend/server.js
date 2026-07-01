@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
-const { verifyTransporter } = require("./config/mailer");
 const healthRoutes = require("./routes/healthRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
 
@@ -14,9 +13,7 @@ const frontendUrl = process.env.FRONTEND_URL;
 
 const envStatus = {
   PORT: !!process.env.PORT,
-  SMTP_HOST: !!process.env.SMTP_HOST,
-  SMTP_USER: !!process.env.SMTP_USER,
-  SMTP_PASS: !!process.env.SMTP_PASS,
+  BREVO_API_KEY: !!process.env.BREVO_API_KEY,
   EMAIL_FROM: !!process.env.EMAIL_FROM,
   EMAIL_TO: !!process.env.EMAIL_TO,
   FRONTEND_URL: !!frontendUrl,
@@ -58,9 +55,6 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Verify SMTP connection on startup
-verifyTransporter();
-
 // Routes
 app.use("/", healthRoutes);
 app.use("/api", bookingRoutes);
@@ -73,12 +67,10 @@ app.listen(port, () => {
   console.log(`Port configuration: ${port}`);
   console.log("---------------------------------------------");
   console.log(" Environment variables check:");
-  console.log(`  PORT status:          [${envStatus.PORT ? "LOADED" : "MISSING (Using default 5000)"}]`);
-  console.log(`  SMTP_HOST status:     [${envStatus.SMTP_HOST ? "LOADED" : "MISSING (Using default)"}] -> ${process.env.SMTP_HOST || "smtp-relay.brevo.com"}`);
-  console.log(`  SMTP_USER status:     [${envStatus.SMTP_USER ? "LOADED" : "MISSING"}] -> ${process.env.SMTP_USER || "None"}`);
-  console.log(`  SMTP_PASS status:     [${envStatus.SMTP_PASS ? "LOADED" : "MISSING"}]`);
-  console.log(`  EMAIL_FROM status:    [${envStatus.EMAIL_FROM ? "LOADED" : "MISSING"}] -> ${process.env.EMAIL_FROM || "None"}`);
-  console.log(`  EMAIL_TO status:      [${envStatus.EMAIL_TO ? "LOADED" : "MISSING"}] -> ${process.env.EMAIL_TO || "None"}`);
-  console.log(`  FRONTEND_URL status:  [${envStatus.FRONTEND_URL ? "LOADED" : "NOT SET (CORS default allowed)"}] -> ${frontendUrl || "None"}`);
+  console.log(`  PORT status:           [${envStatus.PORT ? "LOADED" : "MISSING (Using default 5000)"}]`);
+  console.log(`  BREVO_API_KEY status:  [${envStatus.BREVO_API_KEY ? "LOADED" : "MISSING"}]`);
+  console.log(`  EMAIL_FROM status:     [${envStatus.EMAIL_FROM ? "LOADED" : "MISSING"}] -> ${process.env.EMAIL_FROM || "None"}`);
+  console.log(`  EMAIL_TO status:       [${envStatus.EMAIL_TO ? "LOADED" : "MISSING"}] -> ${process.env.EMAIL_TO || "None"}`);
+  console.log(`  FRONTEND_URL status:   [${envStatus.FRONTEND_URL ? "LOADED" : "NOT SET (CORS default allowed)"}] -> ${frontendUrl || "None"}`);
   console.log("=============================================\n");
 });
