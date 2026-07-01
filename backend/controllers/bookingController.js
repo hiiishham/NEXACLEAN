@@ -1,4 +1,4 @@
-const { transporter, emailUser, emailTo } = require("../config/mailer");
+const { transporter, emailFrom, emailTo } = require("../config/mailer");
 
 // POST endpoint for booking service
 const bookService = async (req, res) => {
@@ -51,7 +51,7 @@ const bookService = async (req, res) => {
 
   // Format the email content
   const mailOptions = {
-    from: emailUser,
+    from: emailFrom,
     to: emailTo,
     subject: `New NexaClean Booking - ${full_name}`,
     html: `
@@ -137,7 +137,7 @@ const subscribe = async (req, res) => {
   console.log("  Subscriber Email:", email);
 
   const mailOptions = {
-    from: emailUser,
+    from: emailFrom,
     to: emailTo,
     subject: `New Newsletter Subscriber - ${email}`,
     html: `

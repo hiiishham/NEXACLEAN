@@ -1,8 +1,17 @@
 // ==========================================
-// API CONFIGURATION (Production)
+// BACKEND HEALTH CHECK
 // ==========================================
-const API_URL = "https://nexaclean.onrender.com/api/book-service";
-const API_SUBSCRIBE_URL = "https://nexaclean.onrender.com/api/subscribe";
+fetch(API.HEALTH_URL)
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === "OK" || data.success) {
+            console.log("Backend Connected");
+        } else {
+            console.error("Backend Offline");
+        }
+    })
+    .catch(() => console.error("Backend Offline"));
+
 
 // ==========================================
 // 1. NAVBAR SCROLL & MOBILE MENU LOGIC
@@ -967,13 +976,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 console.log("Sending request to backend");
-                console.log(`Sending POST request to: ${API_URL}`);
-                const response = await fetch(API_URL, {
+                console.log(`Sending POST request to: ${API.BASE_URL}/book-service`);
+                const response = await fetch(`${API.BASE_URL}/book-service`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify(formData),
+                    signal: AbortSignal.timeout(15000)
                 });
 
                 console.log("Backend response received");
@@ -1004,8 +1014,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 } else {
                     console.log("Booking failed");
-                    console.error("Booking API returned failure:", data.message || response.statusText);
-                    alert("Failed to send booking request.");
+                    console.error("Booking API Error:", data.message || response.statusText);
+                    alert(data.message || "Failed to send booking request.");
                 }
             } catch (error) {
                 console.log("Booking failed");
@@ -1187,10 +1197,11 @@ document.addEventListener("DOMContentLoaded", () => {
             newsletterBtn.innerHTML = "Sending...";
 
             try {
-                const response = await fetch(API_SUBSCRIBE_URL, {
+                const response = await fetch(`${API.BASE_URL}/subscribe`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email }),
+                    signal: AbortSignal.timeout(15000)
                 });
 
                 const data = await response.json();

@@ -14,8 +14,10 @@ const frontendUrl = process.env.FRONTEND_URL;
 
 const envStatus = {
   PORT: !!process.env.PORT,
-  EMAIL_USER: !!process.env.EMAIL_USER,
-  EMAIL_PASS: !!process.env.EMAIL_PASS,
+  SMTP_HOST: !!process.env.SMTP_HOST,
+  SMTP_USER: !!process.env.SMTP_USER,
+  SMTP_PASS: !!process.env.SMTP_PASS,
+  EMAIL_FROM: !!process.env.EMAIL_FROM,
   EMAIL_TO: !!process.env.EMAIL_TO,
   FRONTEND_URL: !!frontendUrl,
 };
@@ -72,9 +74,11 @@ app.listen(port, () => {
   console.log("---------------------------------------------");
   console.log(" Environment variables check:");
   console.log(`  PORT status:          [${envStatus.PORT ? "LOADED" : "MISSING (Using default 5000)"}]`);
-  console.log(`  EMAIL_USER status:    [${envStatus.EMAIL_USER ? "LOADED" : "MISSING"}] -> ${process.env.EMAIL_USER || "None"}`);
-  console.log(`  EMAIL_TO status:      [${envStatus.EMAIL_TO ? "LOADED (Configured)" : "FALLBACK (Same as sender)"}] -> ${process.env.EMAIL_TO || process.env.EMAIL_USER}`);
-  console.log(`  EMAIL_PASS status:    [${envStatus.EMAIL_PASS ? "LOADED" : "MISSING"}]`);
+  console.log(`  SMTP_HOST status:     [${envStatus.SMTP_HOST ? "LOADED" : "MISSING (Using default)"}] -> ${process.env.SMTP_HOST || "smtp-relay.brevo.com"}`);
+  console.log(`  SMTP_USER status:     [${envStatus.SMTP_USER ? "LOADED" : "MISSING"}] -> ${process.env.SMTP_USER || "None"}`);
+  console.log(`  SMTP_PASS status:     [${envStatus.SMTP_PASS ? "LOADED" : "MISSING"}]`);
+  console.log(`  EMAIL_FROM status:    [${envStatus.EMAIL_FROM ? "LOADED" : "MISSING"}] -> ${process.env.EMAIL_FROM || "None"}`);
+  console.log(`  EMAIL_TO status:      [${envStatus.EMAIL_TO ? "LOADED" : "MISSING"}] -> ${process.env.EMAIL_TO || "None"}`);
   console.log(`  FRONTEND_URL status:  [${envStatus.FRONTEND_URL ? "LOADED" : "NOT SET (CORS default allowed)"}] -> ${frontendUrl || "None"}`);
   console.log("=============================================\n");
 });

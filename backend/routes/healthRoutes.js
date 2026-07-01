@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { transporter, emailUser, emailTo } = require("../config/mailer");
+const { transporter, emailFrom, emailTo } = require("../config/mailer");
 
 // Health check endpoint
 router.get("/", (req, res) => {
@@ -22,7 +22,7 @@ router.get("/health", (req, res) => {
 router.get("/api/test-email", async (req, res) => {
   console.log("[TEST EMAIL] Request received to send test email.");
 
-  if (!emailUser || !process.env.EMAIL_PASS) {
+  if (!emailFrom || !process.env.SMTP_PASS) {
     return res.status(500).json({
       success: false,
       message: "SMTP auth credentials missing. Test email aborted."
@@ -30,7 +30,7 @@ router.get("/api/test-email", async (req, res) => {
   }
 
   const mailOptions = {
-    from: emailUser,
+    from: emailFrom,
     to: emailTo,
     subject: "NexaClean Backend Test Email",
     html: `
